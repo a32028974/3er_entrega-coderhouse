@@ -1,3 +1,27 @@
+// Variables
+$primary-color: #24345c;
+$secondary-color: #9fb0d9;
+$background-color: #f5f5f5;
+$highlight-color: #4767b7;
+$navbar-background: linear-gradient(to bottom, #5f6896, transparent);
+
+// Mixins
+@mixin border-radius($radius) {
+  border-radius: $radius;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Fuente
 .oswald-uniquifier {
   font-family: "Oswald", sans-serif;
   font-optical-sizing: auto;
@@ -5,19 +29,21 @@
   font-style: normal;
 }
 
+// Estilo general
 body {
-  background-color: #9fb0d9;
+  background-color: $secondary-color;
 }
 
+// Estilo navbar
 .optica-bg {
-  background: linear-gradient(to bottom, #5f6896, transparent);
+  background: $navbar-background;
 }
 
 .navbar-brand {
   background-color: rgba(245, 245, 245, 0.979);
   width: auto;
   height: auto;
-  border-radius: 10px;
+  @include border-radius(10px);
   margin-left: 15px;
 }
 
@@ -26,21 +52,22 @@ body {
   margin-inline: 10px;
   background-color: #f9fbff;
   color: #9bb2ec;
-  border-radius: 5px;
+  @include border-radius(5px);
 }
 
 .nav-item a:hover {
   color: #fff;
-  background-color: #24345c;
-  border-radius: 5px;
+  background-color: $primary-color;
+  @include border-radius(5px);
   transform: scale(1.5);
 }
 
+// Estilo textos y parrafos
 .texto-principal {
   color: #ffffff;
   border: 5px solid whitesmoke;
-  border-radius: 3px;
-  background-color: #24345c;
+  @include border-radius(3px);
+  background-color: $primary-color;
   margin: 8dvh 0 0 2dvh;
   padding: 20px;
 }
@@ -51,9 +78,10 @@ body {
   font-size: xx-large;
   margin-top: 80px;
   margin-bottom: 80px;
-  color: #24345c;
+  color: $primary-color;
 }
 
+// Estilo img empleados
 .container-img {
   display: flex;
   justify-content: space-around;
@@ -62,7 +90,7 @@ body {
 }
 
 .img-uno, .img-dos, .img-tres {
-  border: solid 3px #4767b7;
+  border: solid 3px $highlight-color;
 }
 
 .container-img-empleados {
@@ -77,29 +105,33 @@ body {
   align-items: center;
   justify-content: flex-start;
   flex-direction: row;
-  background: #f5f5f5;
+  background: $background-color;
   padding: 10px;
-  border-radius: 5px;
-}
-.img_empleado:nth-child(odd) {
-  justify-content: flex-start;
-}
-.img_empleado:nth-child(even) {
-  justify-content: flex-end;
-  text-align: right;
-}
-.img_empleado img {
-  max-width: 100px;
-  margin-right: 10px;
-}
-.img_empleado img:nth-child(even) {
-  margin-right: 0;
-  margin-left: 10px;
+  @include border-radius(5px);
+
+  &:nth-child(odd) {
+    justify-content: flex-start;
+  }
+
+  &:nth-child(even) {
+    justify-content: flex-end;
+    text-align: right;
+  }
+
+  img {
+    max-width: 100px;
+    margin-right: 10px;
+
+    &:nth-child(even) {
+      margin-right: 0;
+      margin-left: 10px;
+    }
+  }
 }
 
 .nosotros_texto {
   margin: 30px 40px 120px;
-  color: #24345c;
+  color: $primary-color;
   font-size: large;
 }
 
@@ -107,32 +139,36 @@ body {
   margin-top: 20px;
   text-align: center;
   font-size: larger;
-}
-.productos h2 {
-  font-size: 1.5em;
-  color: #4767b7;
-  margin-bottom: 10px;
+
+  h2 {
+    font-size: 1.5em;
+    color: $highlight-color;
+    margin-bottom: 10px;
+  }
 }
 
 .producto {
-  color: #24345c;
+  color: $primary-color;
   display: flex;
   align-items: center;
   margin-bottom: 20px;
   background-color: #fff;
   padding: 10px;
-}
-.producto img {
-  max-width: 150px;
-  margin-right: 20px;
-  border-radius: 5px;
-}
-.producto img:last-child {
-  margin-right: 0;
-}
-.producto p {
-  margin: 0;
-  font-size: 1.5em;
+
+  img {
+    max-width: 150px;
+    margin-right: 20px;
+    @include border-radius(5px);
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  p {
+    margin: 0;
+    font-size: 1.5em;
+  }
 }
 
 main form {
@@ -143,9 +179,9 @@ main form {
   background: linear-gradient(to bottom, #ffffff, #152368);
 }
 
+// Estilos para los botones de contacto
 .contact-buttons {
-  display: flex;
-  flex-direction: column;
+  @include flex-column;
   gap: 15px;
   margin-top: 20px;
 }
@@ -158,11 +194,12 @@ main form {
   font-size: 16px;
   text-decoration: none;
   transition: background-color 0.3s ease, transform 0.3s ease;
-}
-.contact-button:hover {
-  background-color: #000000;
-  color: #ffffff;
-  transform: scale(1.05);
+
+  &:hover {
+    background-color: #000000;
+    color: #ffffff;
+    transform: scale(1.05);
+  }
 }
 
 .contact-icon {
@@ -170,6 +207,7 @@ main form {
   height: 24px;
 }
 
+// Estilos para el pie de página
 footer {
   text-align: center;
   padding: 20px;
@@ -183,7 +221,7 @@ footer {
   background-color: #5f6896;
   color: aliceblue;
   text-align: end;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   padding-right: 5dvh;
   position: fixed;
   bottom: 0;
@@ -191,62 +229,68 @@ footer {
   font-size: smaller;
 }
 
+// Estilo datos maps y playlist
 .location-playlist {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center;
   gap: 20px;
   padding: 20px;
   margin: 20px auto;
   max-width: 800px;
   border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: rgba(224, 224, 224, 0.768627451);
-}
-.location-playlist .maps, .location-playlist .playlist {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-  border-radius: 10px;
-  background-color: #e9ecef;
-  flex: 1;
-}
-.location-playlist .maps h2, .location-playlist .playlist h2 {
-  margin-top: 0;
-}
-.location-playlist .maps img, .location-playlist .playlist img {
-  width: 100px;
+  @include border-radius(10px);
+  background-color: #e0e0e0c4;
+
+  .maps, .playlist {
+    @include flex-column;
+    align-items: center;
+    padding: 10px;
+    @include border-radius(10px);
+    background-color: #e9ecef;
+    flex: 1;
+
+    h2 {
+      margin-top: 0;
+    }
+
+    img {
+      width: 100px;
+    }
+  }
 }
 
+// Media queries
 @media (max-width: 768px) {
   .producto {
     width: 45%;
   }
+
   header .navbar-brand img {
     max-width: 80px;
   }
 }
+
 @media (max-width: 480px) {
   .producto {
     display: flex;
     width: 100%;
     margin: 5px 0;
   }
+
   header .navbar-brand img {
     max-width: 60px;
   }
+
   .navbar-nav {
     text-align: center;
   }
+
   .navbar-nav .nav-item {
     margin: 5px 0;
   }
 }
-.nav-img {
-  border-radius: 89%;
-  border: #4767b7;
-  size: 10px;
-}
 
-/*# sourceMappingURL=styles.css.map */
+.nav-img{
+    border-radius: 89%;
+    border: #4767b7;
+    size: 10px; ;
+}
