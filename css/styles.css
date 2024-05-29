@@ -285,7 +285,7 @@ body {
   margin-bottom: 2rem;
 }
 .equipos .equipo img {
-  width: 100%;
+  max-width: 100%;
   height: auto;
   border-radius: 10px;
   transition: transform 0.3s ease-in-out;
@@ -335,7 +335,7 @@ body {
   margin-bottom: 1rem;
 }
 .galeria .col-4 img {
-  width: 100%;
+  max-width: 100%;
   height: auto;
   border-radius: 10px;
   transition: transform 0.3s ease-in-out;
